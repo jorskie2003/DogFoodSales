@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Product</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container mx-auto mt-5">
+    <h2 class="text-2xl font-bold mb-5">Add Customer</h2>
+    <form th:action="@{/customer}" th:object="${customer}" method="post">
+      <table class="table-auto w-full border-collapse border border-gray-200">
+        <tbody>
+          <tr class="border-b">
+            <td class="px-4 py-2 text-right font-semibold">Customer Name:</td>
+            <td class="px-4 py-2"><input type="text" th:field="*{CUSTOMER_NAME}" class="w-full p-2 border border-gray-300 rounded" required></td>
+          </tr>
+          <tr class="border-b">
+            <td class="px-4 py-2 text-right font-semibold">Phone Number:</td>
+            <td class="px-4 py-2"><input type="number" th:field="*{CUSTOMER_PHONENUMBER}" class="w-full p-2 border border-gray-300 rounded" required></td>
+          </tr>
+          <tr class="border-b">
+            <td class="px-4 py-2 text-right font-semibold">Email:</td>
+            <td class="px-4 py-2"><input type="text" th:field="*{CUSTOMER_EMAIL}" class="w-full p-2 border border-gray-300 rounded" required></td>
+          </tr>
+          <tr>
+            <td colspan="2" class="px-4 py-3 text-center">
+              <button type="submit" class="bg-green-500 text-white p-2 rounded hover:bg-green-600">Save</button>
+              <a href="/customer" class="ml-2 bg-gray-300 p-2 rounded hover:bg-gray-400">Cancel</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+  </div>
+</body>
+</html>
+
+
