@@ -16,3 +16,4 @@ CREATE USER dogfood_user IDENTIFIED BY password123;
 GRANT CONNECT, RESOURCE TO dogfood_user;
 ALTER USER dogfood_user DEFAULT TABLESPACE users;
 GRANT UNLIMITED TABLESPACE TO dogfood_user;
+

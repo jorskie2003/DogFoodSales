@@ -4,5 +4,5 @@
   --  email VARCHAR2(100)
 --);
 --DROP TABLE CUSTOMER_ENTITY
---DROP TABLE PRODUCT
-DROP TABLE CUSTOMER
+drop table product
+drop table customer
