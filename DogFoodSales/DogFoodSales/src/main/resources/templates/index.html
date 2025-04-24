@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Product List</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.css" rel="stylesheet">
 </head>
+
 <body>
   <div class="container mx-auto mt-5">
     <h2 class="text-2xl font-bold mb-5 text-center">Product List</h2>
-    <a href="/products/new" class="bg-blue-500 text-white p-2 rounded hover:bg-blue-600 mb-3 inline-block">Add Product</a>
-    <a href="/customer/newCustomer" class="bg-blue-500 text-white p-2 rounded hover:bg-blue-600 mb-3 inline-block">Customer</a>
+    <a href="/products/new" class="bg-blue-500 text-white p-2 rounded hover:bg-blue-600 mb-3 inline-block">Add
+      Product</a>
+    <a href="/customer" class="bg-blue-500 text-white p-2 rounded hover:bg-blue-600 mb-3 inline-block">Customer</a>
     <table class="min-w-full bg-white border-collapse border border-gray-200">
       <thead>
         <tr class="bg-gray-100">
@@ -34,12 +37,15 @@
           <td class="px-4 py-2 border-b" th:text="${product.PRODUCT_PRICE}"></td>
           <td class="px-4 py-2 border-b" th:text="${product.PRODUCT_QUANTITY_STOCK}"></td>
           <td class="px-4 py-2 border-b">
-            <a th:href="@{/products/edit/{id}(id=${product.PRODUCT_ID})}" class="bg-yellow-500 text-white p-2 rounded hover:bg-yellow-600">Edit</a>
-            <a th:href="@{/products/delete/{id}(id=${product.PRODUCT_ID})}" class="bg-red-500 text-white p-2 rounded hover:bg-red-600 ml-2">Delete</a>
+            <a th:href="@{/products/edit/{id}(id=${product.PRODUCT_ID})}"
+              class="bg-yellow-500 text-white p-2 rounded hover:bg-yellow-600">Edit</a>
+            <a th:href="@{/products/delete/{id}(id=${product.PRODUCT_ID})}"
+              class="bg-red-500 text-white p-2 rounded hover:bg-red-600 ml-2">Delete</a>
           </td>
         </tr>
       </tbody>
     </table>
   </div>
 </body>
+
 </html>

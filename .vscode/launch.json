@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-DogFoodSalesApplication<DogFoodSales>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "Dog.Food.Sales.DogFoodSales.DogFoodSalesApplication",
+            "projectName": "DogFoodSales",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

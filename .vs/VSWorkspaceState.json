@@ -1,0 +1,20 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\DogFoodSales",
+    "\\DogFoodSales\\DogFoodSales",
+    "\\DogFoodSales\\DogFoodSales\\src",
+    "\\DogFoodSales\\DogFoodSales\\src\\main",
+    "\\DogFoodSales\\DogFoodSales\\src\\main\\java",
+    "\\DogFoodSales\\DogFoodSales\\src\\main\\java\\Dog",
+    "\\DogFoodSales\\DogFoodSales\\src\\main\\java\\Dog\\Food",
+    "\\DogFoodSales\\DogFoodSales\\src\\main\\java\\Dog\\Food\\Sales",
+    "\\DogFoodSales\\DogFoodSales\\src\\main\\java\\Dog\\Food\\Sales\\DogFoodSales",
+    "\\DogFoodSales\\DogFoodSales\\src\\main\\java\\Dog\\Food\\Sales\\DogFoodSales\\controller",
+    "\\DogFoodSales\\DogFoodSales\\src\\main\\resources",
+    "\\DogFoodSales\\DogFoodSales\\src\\main\\resources\\templates",
+    "\\DogFoodSales\\DogFoodSales\\src\\test\\java"
+  ],
+  "SelectedNode": "\\DogFoodSales\\DogFoodSales\\src\\main\\java\\Dog\\Food\\Sales\\DogFoodSales\\repository\\ProductJpaRepository.java",
+  "PreviewInSolutionExplorer": false
+}
