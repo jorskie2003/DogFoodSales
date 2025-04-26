@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dog Food Products</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #fef6e4; /* light beige */
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+  </style>
+</head>
+
+<body class="text-gray-800">
+  <div class="container mx-auto px-4 py-6">
+    <h1 class="text-4xl font-bold text-center text-yellow-700 mb-6">🐶 Welcome to Dog Food Shop! 🦴</h1>
+
+    <div class="flex justify-center space-x-4 mb-6">
+      <a href="/products/new" class="bg-yellow-500 hover:bg-yellow-600 text-white py-2 px-4 rounded-lg shadow">
+        ➕ Add Product
+      </a>
+      <a href="/customer" class="bg-yellow-400 hover:bg-yellow-500 text-white py-2 px-4 rounded-lg shadow">
+        🧍‍♂️ View Customers
+      </a>
+      <a href="/login" class="text-red-500 font-semibold hover:text-red-700 transition duration-200">Logout</a>
+    </div>
+
+    <div class="overflow-x-auto">
+      <table class="min-w-full bg-white rounded-lg shadow-md overflow-hidden border border-yellow-300">
+        <thead class="bg-yellow-100">
+          <tr>
+            <th class="px-4 py-3 text-left">ID</th>
+            <th class="px-4 py-3 text-left">Product Name</th>
+            <th class="px-4 py-3 text-left">Brand</th>
+            <th class="px-4 py-3 text-left">Description</th>
+            <th class="px-4 py-3 text-left">Quantity</th>
+            <th class="px-4 py-3 text-left">Price</th>
+            <th class="px-4 py-3 text-left">Stock</th>
+            <th class="px-4 py-3 text-left">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="product : ${products}" class="hover:bg-yellow-50">
+            <td class="px-4 py-2 border-b" th:text="${product.PRODUCT_ID}"></td>
+            <td class="px-4 py-2 border-b" th:text="${product.PRODUCT_NAME}"></td>
+            <td class="px-4 py-2 border-b" th:text="${product.PRODUCT_BRAND}"></td>
+            <td class="px-4 py-2 border-b" th:text="${product.PRODUCT_DESCRIPTION}"></td>
+            <td class="px-4 py-2 border-b" th:text="${product.PRODUCT_QUANTITY}"></td>
+            <td class="px-4 py-2 border-b" th:text="${product.PRODUCT_PRICE} + ' PHP'"></td>
+            <td class="px-4 py-2 border-b" th:text="${product.PRODUCT_QUANTITY_STOCK}"></td>
+            <td class="px-4 py-2 border-b">
+              <form th:action="@{/cart/add}" method="post" class="inline">
+                <input type="hidden" name="productId" th:value="${product.PRODUCT_ID}" />
+                <button type="submit"
+                  class="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded-lg shadow text-sm">
+                  🛒 Buy
+                </button>
+              </form>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+
+</html>
