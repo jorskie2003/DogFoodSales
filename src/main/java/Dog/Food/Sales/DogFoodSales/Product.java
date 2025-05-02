@@ -1,6 +1,13 @@
 package Dog.Food.Sales.DogFoodSales;
 
-import jakarta.persistence.*;
+import java.util.Objects;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "Product")
@@ -12,11 +19,12 @@ public class Product {
     private Long PRODUCT_ID;
     private String PRODUCT_NAME;
     private String PRODUCT_BRAND;
-    private Long PRODUCT_PRICE;
+    private double PRODUCT_PRICE;
     private Long PRODUCT_QUANTITY;
     private Long PRODUCT_QUANTITY_STOCK;
     private String PRODUCT_DESCRIPTION;
-
+    private String imageUrl;
+    private String ImageFileName;
     
     @Override
     public String toString() {
@@ -24,6 +32,18 @@ public class Product {
                 + PRODUCT_BRAND + ", PRODUCT_PRICE=" + PRODUCT_PRICE + ", PRODUCT_QUANTITY=" + PRODUCT_QUANTITY
                 + ", PRODUCT_QUANTITY_STOCK=" + PRODUCT_QUANTITY_STOCK + ", PRODUCT_DESCRIPTION=" + PRODUCT_DESCRIPTION
                 + "]";
+    }
+    public String getImageUrl() {
+        return imageUrl;
+    }
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+    public String getImageFileName() {
+        return ImageFileName;
+    }
+    public void setImageFileName(String imageFileName) {
+        ImageFileName = imageFileName;
     }
     public Long getPRODUCT_ID() {
         return PRODUCT_ID;
@@ -43,11 +63,11 @@ public class Product {
     public void setPRODUCT_BRAND(String pRODUCT_BRAND) {
         PRODUCT_BRAND = pRODUCT_BRAND;
     }
-    public Long getPRODUCT_PRICE() {
+    public double getPRODUCT_PRICE() {
         return PRODUCT_PRICE;
     }
-    public void setPRODUCT_PRICE(Long pRODUCT_PRICE) {
-        PRODUCT_PRICE = pRODUCT_PRICE;
+    public void setPRODUCT_PRICE(double pRODUCT_PRICE) {
+        this.PRODUCT_PRICE = pRODUCT_PRICE;
     }
     public Long getPRODUCT_QUANTITY() {
         return PRODUCT_QUANTITY;
@@ -67,6 +87,19 @@ public class Product {
     public void setPRODUCT_DESCRIPTION(String pRODUCT_DESCRIPTION) {
         PRODUCT_DESCRIPTION = pRODUCT_DESCRIPTION;
     }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+                Product product = (Product) o;
+                return Objects.equals(PRODUCT_ID, product.PRODUCT_ID);
+}
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(PRODUCT_ID);
+}
+
     public Product(){
         
     }

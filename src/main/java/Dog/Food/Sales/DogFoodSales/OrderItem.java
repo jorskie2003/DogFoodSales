@@ -1,6 +1,13 @@
 package Dog.Food.Sales.DogFoodSales;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "order_items")
@@ -24,17 +31,17 @@ public class OrderItem {
     @Column(name = "TOTAL_PRICE")
     private double totalPrice;
 
+// getters and setters...
+
     public OrderItem() {}
 
     // Getters and setters
     public Long getId() {
         return id;
     }
-
     public Order getOrder() {
         return order;
     }
-
     public void setOrder(Order order) {
         this.order = order;
     }
@@ -62,4 +69,5 @@ public class OrderItem {
     public void setTotalPrice(double totalPrice) {
         this.totalPrice = totalPrice;
     }
+
 }

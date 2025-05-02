@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Product</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #fef6e4;
+            /* light beige */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mx-auto mt-5">
+        <h2 class="mb-5 text-2xl font-bold">Edit Product</h2>
+
+        <div th:if="${product == null}">
+            <div class="p-4 mb-4 text-red-700 bg-red-100 rounded">Product not found.</div>
+            <a href="/products" class="text-blue-500">Back to Product</a>
+        </div>
+
+        <div th:if="${product != null}">
+            <form th:action="@{/products/update/{id}(id=${product.PRODUCT_ID})}" th:object="${product}" method="post"
+                enctype="multipart/form-data">
+                <input type="hidden" name="${_csrf.parameterName}" th:value="${_csrf.token}">
+                <table class="w-full border border-collapse border-gray-200 table-auto">
+                    <tbody>
+                        <tr class="border-b">
+                            <td class="px-4 py-2 font-semibold text-right">Product Name:</td>
+                            <td class="px-4 py-2"><input type="text" name="PRODUCT_NAME" th:field="*{PRODUCT_NAME}"
+                                    class="w-full p-2 border border-gray-300 rounded" required></td>
+                        </tr>
+                        <tr class="border-b">
+                            <td class="px-4 py-2 font-semibold text-right">Brand:</td>
+                            <td class="px-4 py-2"><input type="text" name="PRODUCT_BRAND" th:field="*{PRODUCT_BRAND}"
+                                    class="w-full p-2 border border-gray-300 rounded" required></td>
+                        </tr>
+                        <tr class="border-b">
+                            <td class="px-4 py-2 font-semibold text-right">Description:</td>
+                            <td class="px-4 py-2"><input type="text" name="PRODUCT_DESCRIPTION"
+                                    th:field="*{PRODUCT_DESCRIPTION}" class="w-full p-2 border border-gray-300 rounded"
+                                    required></td>
+                        </tr>
+                        <tr class="border-b">
+                            <td class="px-4 py-2 font-semibold text-right">Quantity:</td>
+                            <td class="px-4 py-2"><input type="number" name="PRODUCT_QUANTITY"
+                                    th:field="*{PRODUCT_QUANTITY}" class="w-full p-2 border border-gray-300 rounded"
+                                    required></td>
+                        </tr>
+                        <tr class="border-b">
+                            <td class="px-4 py-2 font-semibold text-right">Price:</td>
+                            <td class="px-4 py-2"><input type="number" name="PRODUCT_PRICE" th:field="*{PRODUCT_PRICE}"
+                                    class="w-full p-2 border border-gray-300 rounded" required></td>
+                        </tr>
+                        <tr class="border-b">
+                            <td class="px-4 py-2 font-semibold text-right">Stock:</td>
+                            <td class="px-4 py-2"><input type="number" name="PRODUCT_QUANTITY_STOCK"
+                                    th:field="*{PRODUCT_QUANTITY_STOCK}"
+                                    class="w-full p-2 border border-gray-300 rounded" required></td>
+                        </tr>
+                        <tr class="border-b">
+                            <td class="px-4 py-2 font-semibold text-right">Image:</td>
+                            <td class="px-4 py-2"><input type="file" name="imageFile"
+                                    class="w-full p-2 border border-gray-300 rounded" /></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="px-4 py-3 text-center">
+                                <button type="submit"
+                                    class="p-2 text-white bg-green-500 rounded hover:bg-green-600">Update</button>
+                                <a href="/products" class="p-2 ml-2 bg-gray-300 rounded hover:bg-gray-400">Cancel</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

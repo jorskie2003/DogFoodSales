@@ -10,18 +10,18 @@
 
 <body>
   <div class="container mx-auto mt-5">
-    <h2 class="text-2xl font-bold mb-5 text-center">Customer List</h2>
-    <a href="/customer/newCustomer" class="bg-blue-500 text-white p-2 rounded hover:bg-blue-600 mb-3 inline-block">Add
+    <h2 class="mb-5 text-2xl font-bold text-center">Customer List</h2>
+    <a href="/customer/newCustomer" class="inline-block p-2 mb-3 text-white bg-blue-500 rounded hover:bg-blue-600">Add
       Customer</a>
-    <a href="/products" class="bg-blue-500 text-white p-2 rounded hover:bg-blue-600 mb-3 inline-block">Add
+    <a href="/products/new" class="inline-block p-2 mb-3 text-white bg-blue-500 rounded hover:bg-blue-600">Add
       Product</a>
-    <table class="min-w-full bg-white border-collapse border border-gray-200">
+    <table class="min-w-full bg-white border border-collapse border-gray-200">
       <thead>
         <tr class="bg-gray-100">
-          <th class="px-4 py-2 text-left font-semibold">ID</th>
-          <th class="px-4 py-2 text-left font-semibold">Customer Name</th>
-          <th class="px-4 py-2 text-left font-semibold">Customer PhoneNumber</th>
-          <th class="px-4 py-2 text-left font-semibold">Customer Email</th>
+          <th class="px-4 py-2 font-semibold text-left">ID</th>
+          <th class="px-4 py-2 font-semibold text-left">Customer Name</th>
+          <th class="px-4 py-2 font-semibold text-left">Customer PhoneNumber</th>
+          <th class="px-4 py-2 font-semibold text-left">Customer Email</th>
         </tr>
       </thead>
       <tbody>
@@ -32,9 +32,9 @@
           <td class="px-4 py-2 border-b" th:text="${customer.CUSTOMER_EMAIL}"></td>
           <td class="px-4 py-2 border-b">
             <a th:href="@{/customer/CustomerEdit/{id}(id=${customer.CUSTOMER_ID})}"
-              class="bg-yellow-500 text-white p-2 rounded hover:bg-yellow-600">Edit</a>
+              class="p-2 text-white bg-yellow-500 rounded hover:bg-yellow-600">Edit</a>
             <a th:href="@{/customer/CustomerDelete/{id}(id=${customer.CUSTOMER_ID})}"
-              class="bg-red-500 text-white p-2 rounded hover:bg-red-600 ml-2">Delete</a>
+              class="p-2 ml-2 text-white bg-red-500 rounded hover:bg-red-600">Delete</a>
           </td>
         </tr>
       </tbody>
