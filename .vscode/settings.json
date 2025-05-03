@@ -1,3 +1,9 @@
+<<<<<<< HEAD
 {
-    "java.compile.nullAnalysis.mode": "automatic"
+    "editor.tabSize": 2
 }
+=======
+{
+    "editor.tabSize": 4
+}
+>>>>>>> 50%-Implementation

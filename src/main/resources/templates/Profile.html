@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Profile | Dog Food Sales</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.css" rel="stylesheet">
+  <script>
+    function toggleModal() {
+        const modal = document.getElementById('editProfileModal');
+        modal.classList.toggle('hidden');
+    }
+  </script>
+</head>
+
+<body class="bg-yellow-50 min-h-screen font-sans text-yellow-900">
+  <div class="max-w-6xl mx-auto p-6">
+    <!-- Header -->
+    <header class="mb-6">
+      <h1 class="text-4xl font-extrabold text-yellow-800 text-center mb-2">🐾<span th:text="${customer.CUSTOMER_NAME}"></span>'s Profile</h1>
+      <p class="text-center text-yellow-700">Manage your personal information and keep your pet happy 🐶</p>
+    </header>
+    
+    <nav class="flex justify-center space-x-6 mb-8 bg-yellow-50 rounded-xl px-6 py-4 shadow-md">
+      <a href="/dashboard" class="text-yellow-800 font-semibold hover:text-yellow-600 transition duration-200">Home</a>
+      <a href="/profile" class="text-yellow-800 font-semibold hover:text-yellow-600 transition duration-200">Profile</a>
+      <a href="/products" class="text-yellow-800 font-semibold hover:text-yellow-600 transition duration-200">Products</a>
+      <a href="/login" class="text-red-500 font-semibold hover:text-red-700 transition duration-200">Logout</a>
+    </nav>
+
+   <!-- Profile Info -->
+    <div class="bg-yellow-100 rounded-2xl shadow-lg p-8 max-w-2xl mx-auto text-yellow-900">
+        <h2 class="text-3xl font-extrabold text-center text-yellow-800 mb-6">🐶 Customer Details</h2>
+        <div class="space-y-4 text-lg">
+        <p>
+            <span class="font-semibold text-yellow-800">👤 Full Name:</span>
+            <span th:text="${customer.CUSTOMER_NAME}" class="ml-2"></span>
+        </p>
+        <p>
+            <span class="font-semibold text-yellow-800">📧 Email:</span>
+            <span th:text="${customer.CUSTOMER_EMAIL}" class="ml-2"></span>
+        </p>
+        <p>
+            <span class="font-semibold text-yellow-800">🏡 Address:</span>
+            <span th:text="${customer.CUSTOMER_ADDRESS}" class="ml-2"></span>
+        </p>
+        <p>
+            <span class="font-semibold text-yellow-800">🌆 City:</span>
+            <span th:text="${customer.CUSTOMER_CITY}" class="ml-2"></span>
+        </p>
+        <p>
+            <span class="font-semibold text-yellow-800">📞 Phone:</span>
+            <span th:text="${customer.CUSTOMER_PHONENUMBER}" class="ml-2"></span>
+        </p>
+        </div>
+    </div>
+    
+      <div class="mt-6 text-center">
+        <button onclick="toggleModal()" class="bg-yellow-600 text-white px-4 py-2 rounded hover:bg-yellow-500 transition">
+          Edit Profile
+        </button>
+      </div>
+    </div>
+
+    <!-- Edit Modal -->
+    <div id="editProfileModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
+      <div class="bg-white rounded-2xl shadow-lg p-8 w-full max-w-lg relative">
+        <h2 class="text-xl font-bold text-yellow-800 mb-4">Edit Profile</h2>
+        <form th:action="@{/profile/update}" method="post" th:object="${customer}">
+          <label class="block mb-2 font-semibold">Full Name:</label>
+          <input type="text" th:field="*{CUSTOMER_NAME}" class="w-full mb-4 p-2 border border-yellow-200 rounded"/>
+
+          <label class="block mb-2 font-semibold">Email:</label>
+          <input type="email" th:field="*{CUSTOMER_EMAIL}" class="w-full mb-4 p-2 border border-yellow-200 rounded"/>
+
+          <label class="block mb-2 font-semibold">Address:</label>
+          <input type="text" th:field="*{CUSTOMER_ADDRESS}" class="w-full mb-4 p-2 border border-yellow-200 rounded"/>
+
+          <label class="block mb-2 font-semibold">Phone:</label>
+          <input type="text" th:field="*{CUSTOMER_PHONENUMBER}" class="w-full mb-4 p-2 border border-yellow-200 rounded"/>
+
+          <div class="flex justify-end space-x-4">
+            <button type="button" onclick="toggleModal()" class="px-4 py-2 border rounded border-yellow-600 text-yellow-700 hover:bg-yellow-100 transition">
+              Cancel
+            </button>
+            <button type="submit" class="bg-yellow-600 text-white px-4 py-2 rounded hover:bg-yellow-500 transition">
+              Save
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center text-yellow-700 text-sm mt-10">
+      &copy; 2025 DogFoodSales | Made with ❤️ for your pets
+    </footer>
+  </div>
+</body>
+
+</html>

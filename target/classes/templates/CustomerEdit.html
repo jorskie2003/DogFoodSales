@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Product</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container mx-auto mt-5">
+    <h2 class="text-2xl font-bold mb-5">Edit Customer</h2>
+
+    <div th:if="${customer == null}">
+      <div class="bg-red-100 text-red-700 p-4 mb-4 rounded">Customer not found.</div>
+      <a href="/customer" class="text-blue-500">Back to List</a>
+    </div>
+
+    <div th:if="${customer != null}">
+      <form th:action="@{/customer/{id}(id=${customer.CUSTOMER_ID})}" th:object="${customer}" method="post">
+        <input type="hidden" name="CUSTOMER_ID" th:value="${customer.CUSTOMER_ID}">
+        <table class="table-auto w-full border-collapse border border-gray-200">
+          <tbody>
+            <tr class="border-b">
+                <td class="px-4 py-2 text-right font-semibold">Customer Name:</td>
+                <td class="px-4 py-2"><input type="text" name="CUSTOMER_NAME" th:field="*{CUSTOMER_NAME}" class="w-full p-2 border border-gray-300 rounded" required></td>
+              </tr>
+              <tr class="border-b">
+                <td class="px-4 py-2 text-right font-semibold">Phone number:</td>
+                <td class="px-4 py-2"><input type="number" name="CUSTOMER_PHONENUMBER" th:field="*{CUSTOMER_PHONENUMBER}" class="w-full p-2 border border-gray-300 rounded" required></td>
+              </tr>
+              <tr class="border-b">
+                <td class="px-4 py-2 text-right font-semibold">Email:</td>
+                <td class="px-4 py-2"><input type="text" name="CUSTOMER_EMAIL" th:field="*{CUSTOMER_EMAIL}" class="w-full p-2 border border-gray-300 rounded" required></td>
+              </tr>
+            <tr>
+              <td colspan="2" class="px-4 py-3 text-center">
+                <button type="submit" class="bg-green-500 text-white p-2 rounded hover:bg-green-600">Update</button>
+                <a href="/customer" class="ml-2 bg-gray-300 p-2 rounded hover:bg-gray-400">Cancel</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
