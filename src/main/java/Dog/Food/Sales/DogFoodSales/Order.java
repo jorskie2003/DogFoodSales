@@ -78,7 +78,12 @@ public class Order {
     public Customer getCustomer() {
         return customer;
     }
-
+    public double getTotalOrderPrice() {
+        return items.stream()
+            .mapToDouble(item -> item.getQuantity() * item.getProduct().getPRODUCT_PRICE())
+            .sum();
+    }
+    
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
@@ -114,4 +119,5 @@ public class Order {
     public void setShippingPhone(String shippingPhone) {
         this.shippingPhone = shippingPhone;
     }
+
 }

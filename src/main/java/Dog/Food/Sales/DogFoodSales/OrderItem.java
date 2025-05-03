@@ -69,5 +69,15 @@ public class OrderItem {
     public void setTotalPrice(double totalPrice) {
         this.totalPrice = totalPrice;
     }
+    
+    // Add a convenience method to calculate total price:
+    public void calculateTotalPrice() {
+        if (product != null) {
+            this.totalPrice = product.getPRODUCT_PRICE() * quantity;
+        } else {
+            this.totalPrice = 0;
+        }
+    }
+    
 
 }

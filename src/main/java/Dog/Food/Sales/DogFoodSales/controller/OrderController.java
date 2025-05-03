@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -18,25 +19,26 @@ import Dog.Food.Sales.DogFoodSales.Customer;
 import Dog.Food.Sales.DogFoodSales.Order;
 import Dog.Food.Sales.DogFoodSales.OrderItem;
 import Dog.Food.Sales.DogFoodSales.repository.OrderJpaRepository;
+import Dog.Food.Sales.DogFoodSales.repository.OrderRepository;
 import Dog.Food.Sales.DogFoodSales.repository.ProductJpaRepository;
 import Dog.Food.Sales.DogFoodSales.service.CartService;
 import Dog.Food.Sales.DogFoodSales.service.CustomerService;
-import Dog.Food.Sales.DogFoodSales.service.ProductService;
+import Dog.Food.Sales.DogFoodSales.service.OrderService;
 
 @Controller
 public class OrderController {
     @Autowired
-    private OrderJpaRepository orderRepository;
-    @Autowired
-    private ProductService productService;
+    private OrderJpaRepository orderJpaRepository;
     @Autowired
     private ProductJpaRepository productRepository;
     @Autowired
     private CartService cartService;
-
+    @Autowired
+    private OrderService orderService;
     @Autowired
     private CustomerService customerService;
-    
+    @Autowired
+    private OrderRepository orderRepository;
     @GetMapping("/checkout")
     public String checkout(Model model) {
         // Get cart items and total price
@@ -129,4 +131,16 @@ public class OrderController {
 
     return "order-success";  // your order confirmation page
 }
+    @GetMapping("/orderlist")
+        public String viewOrders(Model model, Principal principal) {
+            String email = principal.getName();
+            Customer customer = customerService.findByEmail(email).orElse(null);
+            if (customer == null) {
+                // Handle error or redirect to login
+                return "redirect:/login";
+            }
+            List<Order> orders = orderRepository.findByCustomer(customer);
+            model.addAttribute("orders", orders);
+            return "orderhistory"; // New template
+    }
 }

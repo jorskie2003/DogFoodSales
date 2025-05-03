@@ -6,6 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dog Food Products</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <!-- Toastr CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+  <!-- jQuery (required for toastr) -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- Toastr JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
   <style>
     body {
       background-color: #fffaf3;
@@ -14,6 +21,17 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
   </style>
+  <script th:if="${addedProduct != null}">
+    $(document).ready(function() {
+      toastr.success('Added [[${addedProduct.PRODUCT_NAME}]] to cart!');
+    });
+    toastr.options = {
+        "closeButton": true,
+        "progressBar": true,
+        "positionClass": "toast-top-right",
+        "timeOut": "3000"
+    };
+  </script>
 
 </head>
 
@@ -48,6 +66,9 @@
       <a href="/login" class="font-semibold text-red-500 transition duration-200 hover:text-red-700">Logout</a>
       <a href="/cart" class="font-semibold text-yellow-800 transition duration-200 hover:text-yellow-600">View Cart
         🛒</a>
+        <a href="/orderlist" class="font-semibold text-yellow-800 transition duration-200 hover:text-yellow-600">
+          View Order History 🧾
+        </a>
     </nav>
 
 
